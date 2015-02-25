@@ -24,7 +24,7 @@ namespace MvcMusicStore.Controllers
         public async Task<ActionResult> Details(int id = 0)
         {
             var album = await _storeContext.Albums.FindAsync(id);
-            
+
             if (album == null)
             {
                 return HttpNotFound();
@@ -46,9 +46,9 @@ namespace MvcMusicStore.Controllers
             if (ModelState.IsValid)
             {
                 _storeContext.Albums.Add(album);
-                
+
                 await _storeContext.SaveChangesAsync();
-                
+
                 return RedirectToAction("Index");
             }
 
@@ -73,10 +73,10 @@ namespace MvcMusicStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                _storeContext.Entry(album).SetState(EntityState.Modified);
-                
+                _storeContext.Entry(album).State = EntityState.Modified;
+
                 await _storeContext.SaveChangesAsync();
-                
+
                 return RedirectToAction("Index");
             }
 

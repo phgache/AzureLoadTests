@@ -29,9 +29,9 @@ namespace MvcMusicStore.Controllers
             if (ModelState.IsValid)
             {
                 _storeContext.Albums.Add(album);
-                
+
                 await _storeContext.SaveChangesAsync();
-                
+
                 return RedirectToAction("Index");
             }
 
@@ -56,10 +56,10 @@ namespace MvcMusicStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                _storeContext.Entry(album).SetState(EntityState.Modified);
-                
+                _storeContext.Entry(album).State = EntityState.Modified;
+
                 await _storeContext.SaveChangesAsync();
-                
+
                 return RedirectToAction("Index");
             }
 
