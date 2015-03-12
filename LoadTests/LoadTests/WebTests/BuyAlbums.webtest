@@ -5,6 +5,19 @@
       <Headers>
         <Header Name="DNT" Value="1" />
       </Headers>
+      <ExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="LoginAntiForgeryToken" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt; " />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </ExtractionRules>
     </Request>
     <Request Method="POST" Guid="5ce9075c-09e4-4dce-8692-2c0bfceb714a" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/Account/Login" ThinkTime="7" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
@@ -13,7 +26,7 @@
         <Header Name="Pragma" Value="no-cache" />
       </Headers>
       <FormPostHttpBody>
-        <FormPostParameter Name="__RequestVerificationToken" Value="4SPPMMjm-0s4qYNKk1JEyOUr5xKkkYoRU_LxJfDh64IKX6cd0kIOzqqTryZ5FaXBhjl0izT2jmwP7ESqrTCK5eHgsXGenQ8uBv3WsjJiWFXqgWjehA0b80ToHlt2UuBc9Pck9qxUrNv7RJcGbZs5lyxQVnE" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="__RequestVerificationToken" Value="{{LoginAntiForgeryToken}}" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
         <FormPostParameter Name="Email" Value="pierrehenri.gache@outlook.com" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
         <FormPostParameter Name="Password" Value="P@ssw0rd" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
         <FormPostParameter Name="RememberMe" Value="true" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
@@ -65,26 +78,19 @@
       <Headers>
         <Header Name="DNT" Value="1" />
       </Headers>
-    </Request>
-    <Request Method="POST" Guid="a1660835-180b-423b-b893-97d55942166b" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/Checkout/AddressAndPayment" ThinkTime="12" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
-      <Headers>
-        <Header Name="Content-Type" Value="application/x-www-form-urlencoded" />
-        <Header Name="DNT" Value="1" />
-        <Header Name="Pragma" Value="no-cache" />
-      </Headers>
-      <FormPostHttpBody>
-        <FormPostParameter Name="__RequestVerificationToken" Value="4SPPMMjm-0s4qYNKk1JEyOUr5xKEVrIE1L_wR9PrNRWnX3R2cCsvv_y5-mhJ7PDJkXksfMOVy9VxrrEgavjhWjh8Sea20TDvj5W5lA9ewUc_XccncBWqMerBPM3rRaHiF6RK1YAQMtQe2oEssbQYHIjmcg5RZpx7jiVyQ3xMkxuoZuD9hGQjt6432F6QYwyCaq1TVQ" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
-        <FormPostParameter Name="FirstName" Value="Pierre-Henri" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
-        <FormPostParameter Name="LastName" Value="Gache" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
-        <FormPostParameter Name="Address" Value="addr" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
-        <FormPostParameter Name="City" Value="Paris" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
-        <FormPostParameter Name="State" Value="state" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
-        <FormPostParameter Name="PostalCode" Value="75000" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
-        <FormPostParameter Name="Country" Value="country" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
-        <FormPostParameter Name="Phone" Value="000000000" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
-        <FormPostParameter Name="Email" Value="pierrehenri.gache@outlook.com" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
-        <FormPostParameter Name="PromoCode" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
-      </FormPostHttpBody>
+      <ExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="PaymentAntiForgeryToken" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt; " />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </ExtractionRules>
     </Request>
     <Request Method="POST" Guid="6dd048fb-72e6-42be-8bec-aa4178e230b0" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/Checkout/AddressAndPayment" ThinkTime="7" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
@@ -93,7 +99,7 @@
         <Header Name="Pragma" Value="no-cache" />
       </Headers>
       <FormPostHttpBody>
-        <FormPostParameter Name="__RequestVerificationToken" Value="4SPPMMjm-0s4qYNKk1JEyOUr5xJuNC6Yb3HAjK6xWZwYOb9JPjaDU1wOqILDLcZAOBZam2JfxUV8Xg95oQ0nXg0Ts65vQ3QQWlYbXiatTYSm2ItP8GWKQcSb612O234ZyJX23ajXaQpA0u7tnFAwZCpyqDYF_UZwYt4gH3h8rdMkeBWzbK7V2Z79mwCUWsGIVx5wlQ" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="__RequestVerificationToken" Value="{{PaymentAntiForgeryToken}}" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
         <FormPostParameter Name="FirstName" Value="Pierre-Henri" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
         <FormPostParameter Name="LastName" Value="Gache" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
         <FormPostParameter Name="Address" Value="addr" RecordedValue="" CorrelationBinding="" UrlEncode="True" />

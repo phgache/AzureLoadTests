@@ -6,13 +6,15 @@
         <Header Name="DNT" Value="1" />
       </Headers>
       <QueryStringParameters>
-        <QueryStringParameter Name="Genre" Value="Pop" RecordedValue="" CorrelationBinding="" UrlEncode="True" UseToGroupResults="False" />
+        <QueryStringParameter Name="Genre" Value="{{GenreDataSource.Genre.Name}}" RecordedValue="" CorrelationBinding="" UrlEncode="True" UseToGroupResults="False" />
       </QueryStringParameters>
     </Request>
-    <Request Method="GET" Guid="93efa7b6-7f05-447b-92c9-be1ef7d48b2c" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/Store/Details/52" ThinkTime="0" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
-      <Headers>
-        <Header Name="DNT" Value="1" />
-      </Headers>
-    </Request>
   </Items>
+  <DataSources>
+    <DataSource Name="GenreDataSource" Provider="System.Data.SqlClient" Connection="LAs4ogoKlDfzF8hxnOeOVNNh0fQF0oFxX+m0WtWri6H4SdiuYNbxz8YJanp9VsPqvBd3rUSlvSBgXKO2nn4pKocx87JjIMhpqRTg/zUxwek23xiB3FNbygjz+VUUodRiSnaK1d9aXqPqy01pQNLqtN9/2PxPn1KHpX+60v6RAyrncUM1woqJdnujQaKqyqc/51c5ZWCmyQgWtepU9jzYU3CSG2oVTZ/Y" ConnectionDisplayValue="Data Source=i94w0iwsdd.database.windows.net,1433;Initial Catalog=MusicStoreDb;Persist Security Info=True;User ID=admindata@i94w0iwsdd">
+      <Tables>
+        <DataSourceTable Name="Genre" SelectColumns="SelectOnlyBoundColumns" AccessMethod="Sequential" />
+      </Tables>
+    </DataSource>
+  </DataSources>
 </WebTest>
