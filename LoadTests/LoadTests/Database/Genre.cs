@@ -16,7 +16,7 @@ namespace LoadTests.Database
         #endregion
 
         #region public property
-
+        
         public virtual List<Album> Albums { get; protected set; }
 
         public string Description { get; set; }

@@ -19,11 +19,9 @@ namespace LoadTests
     using Microsoft.VisualStudio.TestTools.WebTesting;
     using Microsoft.VisualStudio.TestTools.WebTesting.Rules;
 
-
     [Priority(0)]
     public class AddAndRemoveAlbumFromCartCoded : WebTest
     {
-
         public AddAndRemoveAlbumFromCartCoded()
         {
             this.PreAuthenticate = true;
@@ -100,17 +98,22 @@ namespace LoadTests
             request5 = null;
         }
 
+        private static Genre[] genres;
+
         private static void GetRandomGenreAndAlbum(out Genre genre, out Album album)
         {
-            using (MusicStoreContext context = new MusicStoreContext("MusicStoreDb"))
+            if (genres == null)
             {
-                Genre[] genres = context.Genres.ToArray();
-
-                Random random = new Random(DateTime.Now.Millisecond);
-
-                genre = genres[random.Next(0, genres.Length - 1)];
-                album = genre.Albums[random.Next(0, genre.Albums.Count - 1)];
+                using (MusicStoreContext context = new MusicStoreContext("MusicStoreDb"))
+                {
+                    genres = context.Genres.ToArray();
+                }
             }
+
+            Random random = new Random(DateTime.Now.Millisecond);
+
+            genre = genres[random.Next(0, genres.Length - 1)];
+            album = genre.Albums[random.Next(0, genre.Albums.Count - 1)];
         }
     }
 }
