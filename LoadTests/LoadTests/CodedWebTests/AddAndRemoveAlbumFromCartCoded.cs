@@ -98,7 +98,7 @@ namespace LoadTests
             request5 = null;
         }
 
-        private static Genre[] genres;
+        private static List<Genre> genres;
 
         private static void GetRandomGenreAndAlbum(out Genre genre, out Album album)
         {
@@ -106,13 +106,15 @@ namespace LoadTests
             {
                 using (MusicStoreContext context = new MusicStoreContext("MusicStoreDb"))
                 {
-                    genres = context.Genres.ToArray();
+                    genres = context.Genres.ToList();
+                    // Load albums
+                    context.Albums.ToList();
                 }
             }
 
             Random random = new Random(DateTime.Now.Millisecond);
 
-            genre = genres[random.Next(0, genres.Length - 1)];
+            genre = genres[random.Next(0, genres.Count - 1)];
             album = genre.Albums[random.Next(0, genre.Albums.Count - 1)];
         }
     }

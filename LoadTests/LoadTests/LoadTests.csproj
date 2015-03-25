@@ -68,7 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Datasource\AlbumWithGenre.csv" />
+    <None Include="Datasource\AlbumWithGenre.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="LoadTests\LoadTestComplete.loadtest">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
