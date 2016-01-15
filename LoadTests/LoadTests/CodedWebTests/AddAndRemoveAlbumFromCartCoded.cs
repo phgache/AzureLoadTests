@@ -36,7 +36,7 @@ namespace LoadTests
             Album album;
             GetRandomGenreAndAlbum(out genre, out album);
 
-            WebTestRequest request1 = new WebTestRequest("http://musicstoreweb.azurewebsites.net/Store/Browse");
+            WebTestRequest request1 = new WebTestRequest("http://musicstoreapp.azurewebsites.net/Store/Browse");
             request1.ThinkTime = 2;
             request1.Timeout = 60;
             request1.Headers.Add(new WebTestRequestHeader("DNT", "1"));
@@ -44,37 +44,27 @@ namespace LoadTests
             yield return request1;
             request1 = null;
 
-            WebTestRequest request2 = new WebTestRequest(string.Format("http://musicstoreweb.azurewebsites.net/Store/Details/{0}", album.AlbumId));
+            WebTestRequest request2 = new WebTestRequest(string.Format("http://musicstoreapp.azurewebsites.net/Store/Details/{0}", album.AlbumId));
             request2.ThinkTime = 6;
             request2.Timeout = 60;
             request2.Headers.Add(new WebTestRequestHeader("DNT", "1"));
             yield return request2;
             request2 = null;
 
-            WebTestRequest request3 = new WebTestRequest(string.Format("http://musicstoreweb.azurewebsites.net/ShoppingCart/AddToCart/{0}", album.AlbumId));
+            WebTestRequest request3 = new WebTestRequest(string.Format("http://musicstoreapp.azurewebsites.net/ShoppingCart/AddToCart/{0}", album.AlbumId));
             request3.ThinkTime = 5;
             request3.Timeout = 60;
             request3.Headers.Add(new WebTestRequestHeader("DNT", "1"));
             yield return request3;
             request3 = null;
 
-            WebTestRequest request4 = new WebTestRequest("http://musicstoreweb.azurewebsites.net/ShoppingCart");
+            WebTestRequest request4 = new WebTestRequest("http://musicstoreapp.azurewebsites.net/ShoppingCart");
             request4.ThinkTime = 8;
             request4.Timeout = 60;
             request4.Headers.Add(new WebTestRequestHeader("DNT", "1"));
-            ExtractText extractionRule1 = new ExtractText();
-            extractionRule1.StartsWith = "n\": \'";
-            extractionRule1.EndsWith = "\' },\r";
-            extractionRule1.Index = 0;
-            extractionRule1.IgnoreCase = false;
-            extractionRule1.UseRegularExpression = false;
-            extractionRule1.HtmlDecode = true;
-            extractionRule1.Required = false;
-            extractionRule1.ContextParameterName = "CartAntiForgeryToken";
-            request4.ExtractValues += new EventHandler<ExtractionEventArgs>(extractionRule1.Extract);
             ExtractText extractionRule2 = new ExtractText();
-            extractionRule2.StartsWith = "-id=\"";
-            extractionRule2.EndsWith = "\"\r\n  ";
+            extractionRule2.StartsWith = "data-id=\"";
+            extractionRule2.EndsWith = "\"\r\n                  data-url";
             extractionRule2.Index = 0;
             extractionRule2.IgnoreCase = false;
             extractionRule2.UseRegularExpression = false;
@@ -85,7 +75,7 @@ namespace LoadTests
             yield return request4;
             request4 = null;
 
-            WebTestRequest request5 = new WebTestRequest("http://musicstoreweb.azurewebsites.net/ShoppingCart/RemoveFromCart");
+            WebTestRequest request5 = new WebTestRequest("http://musicstoreapp.azurewebsites.net/ShoppingCart/RemoveFromCart");
             request5.Timeout = 60;
             request5.Method = "POST";
             request5.Headers.Add(new WebTestRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8"));
@@ -94,7 +84,6 @@ namespace LoadTests
             request5.Headers.Add(new WebTestRequestHeader("Pragma", "no-cache"));
             FormPostHttpBody request5Body = new FormPostHttpBody();
             request5Body.FormPostParameters.Add("id", this.Context["IdToRemove"].ToString());
-            request5Body.FormPostParameters.Add("RequestVerificationToken", this.Context["CartAntiForgeryToken"].ToString());
             request5.Body = request5Body;
             yield return request5;
             request5 = null;

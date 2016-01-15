@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LoadTests.Database
 {
-    [Table("Genre")]
+    [Table("Genres")]
     public class Genre
     {
         #region constructor

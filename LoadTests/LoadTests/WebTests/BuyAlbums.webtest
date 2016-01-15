@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WebTest Name="BuyAlbums" Id="476f6032-9a67-4be4-b0cc-b1b1977c19fc" Owner="" Priority="0" Enabled="True" CssProjectStructure="" CssIteration="" Timeout="0" WorkItemIds="" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010" Description="" CredentialUserName="" CredentialPassword="" PreAuthenticate="True" Proxy="default" StopOnError="False" RecordedResultFile="" ResultsLocale="">
   <Items>
-    <Request Method="GET" Guid="8a18f81b-7cef-43eb-9d0a-c549b7c0d9dd" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/Account/Login" ThinkTime="20" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+    <Request Method="GET" Guid="8a18f81b-7cef-43eb-9d0a-c549b7c0d9dd" Version="1.1" Url="http://musicstoreapp.azurewebsites.net/Account/Login" ThinkTime="20" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
         <Header Name="DNT" Value="1" />
       </Headers>
@@ -19,7 +19,7 @@
         </ExtractionRule>
       </ExtractionRules>
     </Request>
-    <Request Method="POST" Guid="5ce9075c-09e4-4dce-8692-2c0bfceb714a" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/Account/Login" ThinkTime="7" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+    <Request Method="POST" Guid="5ce9075c-09e4-4dce-8692-2c0bfceb714a" Version="1.1" Url="http://musicstoreapp.azurewebsites.net/Account/Login" ThinkTime="7" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
         <Header Name="Content-Type" Value="application/x-www-form-urlencoded" />
         <Header Name="DNT" Value="1" />
@@ -33,7 +33,7 @@
         <FormPostParameter Name="RememberMe" Value="false" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
       </FormPostHttpBody>
     </Request>
-    <Request Method="GET" Guid="67ddaf1d-92f1-48f9-b6de-97bfa9fba4f9" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/Store/Browse" ThinkTime="1" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+    <Request Method="GET" Guid="67ddaf1d-92f1-48f9-b6de-97bfa9fba4f9" Version="1.1" Url="http://musicstoreapp.azurewebsites.net/Store/Browse" ThinkTime="1" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
         <Header Name="DNT" Value="1" />
       </Headers>
@@ -41,22 +41,22 @@
         <QueryStringParameter Name="Genre" Value="Electronic" RecordedValue="" CorrelationBinding="" UrlEncode="True" UseToGroupResults="False" />
       </QueryStringParameters>
     </Request>
-    <Request Method="GET" Guid="1af69186-4b70-4ed9-bcbf-531d9402b7cf" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/Store/Details/282" ThinkTime="1" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+    <Request Method="GET" Guid="1af69186-4b70-4ed9-bcbf-531d9402b7cf" Version="1.1" Url="http://musicstoreapp.azurewebsites.net/Store/Details/282" ThinkTime="1" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
         <Header Name="DNT" Value="1" />
       </Headers>
     </Request>
-    <Request Method="GET" Guid="65b6f238-52ad-4a10-91eb-d3e7d09b8234" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/ShoppingCart/AddToCart/282" ThinkTime="2" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+    <Request Method="GET" Guid="65b6f238-52ad-4a10-91eb-d3e7d09b8234" Version="1.1" Url="http://musicstoreapp.azurewebsites.net/ShoppingCart/AddToCart/282" ThinkTime="2" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
         <Header Name="DNT" Value="1" />
       </Headers>
     </Request>
-    <Request Method="GET" Guid="caf96f80-e287-4068-a43a-d7da923e1664" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/ShoppingCart" ThinkTime="6" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+    <Request Method="GET" Guid="caf96f80-e287-4068-a43a-d7da923e1664" Version="1.1" Url="http://musicstoreapp.azurewebsites.net/ShoppingCart" ThinkTime="6" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
         <Header Name="DNT" Value="1" />
       </Headers>
     </Request>
-    <Request Method="GET" Guid="0e785e5c-746c-4f75-bbe1-9ae287a24ab2" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/Store/Browse" ThinkTime="2" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+    <Request Method="GET" Guid="0e785e5c-746c-4f75-bbe1-9ae287a24ab2" Version="1.1" Url="http://musicstoreapp.azurewebsites.net/Store/Browse" ThinkTime="2" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
         <Header Name="DNT" Value="1" />
       </Headers>
@@ -64,17 +64,17 @@
         <QueryStringParameter Name="Genre" Value="Rap" RecordedValue="" CorrelationBinding="" UrlEncode="True" UseToGroupResults="False" />
       </QueryStringParameters>
     </Request>
-    <Request Method="GET" Guid="6db7f2e4-e2f3-4351-82cb-948d2fe24246" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/Store/Details/179" ThinkTime="2" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+    <Request Method="GET" Guid="6db7f2e4-e2f3-4351-82cb-948d2fe24246" Version="1.1" Url="http://musicstoreapp.azurewebsites.net/Store/Details/179" ThinkTime="2" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
         <Header Name="DNT" Value="1" />
       </Headers>
     </Request>
-    <Request Method="GET" Guid="eef0cf7b-7dbb-4b57-81c2-435d3ad08a81" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/ShoppingCart/AddToCart/179" ThinkTime="3" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+    <Request Method="GET" Guid="eef0cf7b-7dbb-4b57-81c2-435d3ad08a81" Version="1.1" Url="http://musicstoreapp.azurewebsites.net/ShoppingCart/AddToCart/179" ThinkTime="3" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
         <Header Name="DNT" Value="1" />
       </Headers>
     </Request>
-    <Request Method="GET" Guid="29993722-d054-41bb-980d-d6580afd3803" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/Checkout/AddressAndPayment" ThinkTime="45" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+    <Request Method="GET" Guid="29993722-d054-41bb-980d-d6580afd3803" Version="1.1" Url="http://musicstoreapp.azurewebsites.net/Checkout/AddressAndPayment" ThinkTime="45" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
         <Header Name="DNT" Value="1" />
       </Headers>
@@ -92,7 +92,7 @@
         </ExtractionRule>
       </ExtractionRules>
     </Request>
-    <Request Method="POST" Guid="6dd048fb-72e6-42be-8bec-aa4178e230b0" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/Checkout/AddressAndPayment" ThinkTime="7" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+    <Request Method="POST" Guid="6dd048fb-72e6-42be-8bec-aa4178e230b0" Version="1.1" Url="http://musicstoreapp.azurewebsites.net/Checkout/AddressAndPayment" ThinkTime="7" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
         <Header Name="Content-Type" Value="application/x-www-form-urlencoded" />
         <Header Name="DNT" Value="1" />
@@ -112,7 +112,7 @@
         <FormPostParameter Name="PromoCode" Value="FREE" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
       </FormPostHttpBody>
     </Request>
-    <Request Method="GET" Guid="366e8540-e7e4-4e00-ab54-d0ead12a022f" Version="1.1" Url="http://musicstoreweb.azurewebsites.net/" ThinkTime="0" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+    <Request Method="GET" Guid="366e8540-e7e4-4e00-ab54-d0ead12a022f" Version="1.1" Url="http://musicstoreapp.azurewebsites.net/" ThinkTime="0" Timeout="60" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
       <Headers>
         <Header Name="DNT" Value="1" />
       </Headers>
