@@ -18,6 +18,9 @@ namespace LoadTests.Database
             ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap {ExeConfigFilename = System.Reflection.Assembly.GetExecutingAssembly().ManifestModule.Name + ".config"};
             var config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
             Database.Connection.ConnectionString = config.ConnectionStrings.ConnectionStrings[connectionName].ConnectionString;
+
+            // Disable to load all data once
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         #endregion
