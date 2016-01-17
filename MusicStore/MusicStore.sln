@@ -9,6 +9,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MvcMusicStore.Sql.DefaultCo
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MvcMusicStore.Sql.MusicStoreEntities", "MvcMusicStore.Sql.MusicStoreEntities\MvcMusicStore.Sql.MusicStoreEntities.sqlproj", "{CB4335BA-B412-4DB9-810F-06C10E1827F3}"
 EndProject
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "AzureResources", "AzureResources\AzureResources.deployproj", "{B29E741D-9F9A-4F5D-97F4-C8E8BF2E51CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{CB4335BA-B412-4DB9-810F-06C10E1827F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB4335BA-B412-4DB9-810F-06C10E1827F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CB4335BA-B412-4DB9-810F-06C10E1827F3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B29E741D-9F9A-4F5D-97F4-C8E8BF2E51CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B29E741D-9F9A-4F5D-97F4-C8E8BF2E51CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B29E741D-9F9A-4F5D-97F4-C8E8BF2E51CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B29E741D-9F9A-4F5D-97F4-C8E8BF2E51CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

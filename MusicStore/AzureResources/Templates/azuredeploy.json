@@ -1,0 +1,229 @@
+﻿{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "MusicStorePlanName": {
+            "type": "string",
+            "minLength": 1
+        },
+        "MusicStorePlanSKU": {
+            "type": "string",
+            "allowedValues": [
+                "Free",
+                "Shared",
+                "Basic",
+                "Standard"
+            ],
+            "defaultValue": "Free"
+        },
+        "MusicStorePlanWorkerSize": {
+            "type": "string",
+            "allowedValues": [
+                "0",
+                "1",
+                "2"
+            ],
+            "defaultValue": "0"
+        },
+        "musicstoredatabaseserverAdminLogin": {
+            "type": "string",
+            "minLength": 1
+        },
+        "musicstoredatabaseserverAdminLoginPassword": {
+            "type": "securestring"
+        },
+        "DefaultConnectionName": {
+            "type": "string",
+            "minLength": 1
+        },
+        "DefaultConnectionCollation": {
+            "type": "string",
+            "minLength": 1,
+            "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
+        },
+        "DefaultConnectionEdition": {
+            "type": "string",
+            "defaultValue": "Basic",
+            "allowedValues": [
+                "Basic",
+                "Standard",
+                "Premium"
+            ]
+        },
+        "DefaultConnectionRequestedServiceObjectiveName": {
+            "type": "string",
+            "defaultValue": "Basic",
+            "allowedValues": [
+                "Basic",
+                "S0",
+                "S1",
+                "S2",
+                "P1",
+                "P2",
+                "P3"
+            ],
+            "metadata": {
+                "description": "Describes the performance level for Edition"
+            }
+        },
+        "MusicStoreEntitiesName": {
+            "type": "string",
+            "minLength": 1
+        },
+        "MusicStoreEntitiesSKU": {
+            "type": "string",
+            "allowedValues": [
+                "Free",
+                "Shared",
+                "Basic",
+                "Standard"
+            ],
+            "defaultValue": "Free"
+        },
+        "MusicStoreEntitiesWorkerSize": {
+            "type": "string",
+            "allowedValues": [
+                "0",
+                "1",
+                "2"
+            ],
+            "defaultValue": "0"
+        },
+        "MusicStoreEntitiesCollation": {
+            "type": "string",
+            "minLength": 1,
+            "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
+        },
+        "MusicStoreEntitiesEdition": {
+            "type": "string",
+            "defaultValue": "Basic",
+            "allowedValues": [
+                "Basic",
+                "Standard",
+                "Premium"
+            ]
+        },
+        "MusicStoreEntitiesRequestedServiceObjectiveName": {
+            "type": "string",
+            "defaultValue": "Basic",
+            "allowedValues": [
+                "Basic",
+                "S0",
+                "S1",
+                "S2",
+                "P1",
+                "P2",
+                "P3"
+            ],
+            "metadata": {
+                "description": "Describes the performance level for Edition"
+            }
+        }
+    },
+    "variables": {
+      "MusicStoreAppName": "MusicStoreApp",
+      "musicstoredatabaseserverName": "musicstoredatabaseserver"
+    },
+    "resources": [
+        {
+            "name": "[parameters('MusicStorePlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2014-06-01",
+            "dependsOn": [ ],
+            "tags": {
+                "displayName": "MusicStorePlan"
+            },
+            "properties": {
+                "name": "[parameters('MusicStorePlanName')]",
+                "sku": "[parameters('MusicStorePlanSKU')]",
+                "workerSize": "[parameters('MusicStorePlanWorkerSize')]",
+                "numberOfWorkers": 1
+            }
+        },
+        {
+            "name": "[variables('MusicStoreAppName')]",
+            "type": "Microsoft.Web/sites",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2015-08-01",
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]"
+            ],
+            "tags": {
+                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]": "Resource",
+                "displayName": "MusicStoreApp"
+            },
+            "properties": {
+                "name": "[variables('MusicStoreAppName')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]"
+            }
+        },
+        {
+            "name": "[variables('musicstoredatabaseserverName')]",
+            "type": "Microsoft.Sql/servers",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2014-04-01-preview",
+            "dependsOn": [ ],
+            "tags": {
+                "displayName": "musicstoredatabaseserver"
+            },
+            "properties": {
+                "administratorLogin": "[parameters('musicstoredatabaseserverAdminLogin')]",
+                "administratorLoginPassword": "[parameters('musicstoredatabaseserverAdminLoginPassword')]"
+            },
+            "resources": [
+                {
+                    "name": "AllowAllWindowsAzureIps",
+                    "type": "firewallrules",
+                    "location": "[resourceGroup().location]",
+                    "apiVersion": "2014-04-01-preview",
+                    "dependsOn": [
+                        "[concat('Microsoft.Sql/servers/', variables('musicstoredatabaseserverName'))]"
+                    ],
+                    "properties": {
+                        "startIpAddress": "0.0.0.0",
+                        "endIpAddress": "0.0.0.0"
+                    }
+                },
+                {
+                    "name": "[parameters('DefaultConnectionName')]",
+                    "type": "databases",
+                    "location": "[resourceGroup().location]",
+                    "apiVersion": "2014-04-01-preview",
+                    "dependsOn": [
+                        "[variables('musicstoredatabaseserverName')]"
+                    ],
+                    "tags": {
+                        "displayName": "DefaultConnection"
+                    },
+                    "properties": {
+                        "collation": "[parameters('DefaultConnectionCollation')]",
+                        "edition": "[parameters('DefaultConnectionEdition')]",
+                        "maxSizeBytes": "1073741824",
+                        "requestedServiceObjectiveName": "[parameters('DefaultConnectionRequestedServiceObjectiveName')]"
+                    }
+                },
+                {
+                    "name": "[parameters('MusicStoreEntitiesName')]",
+                    "type": "databases",
+                    "location": "[resourceGroup().location]",
+                    "apiVersion": "2014-04-01-preview",
+                    "dependsOn": [
+                        "[variables('musicstoredatabaseserverName')]"
+                    ],
+                    "tags": {
+                        "displayName": "MusicStoreEntities"
+                    },
+                    "properties": {
+                        "collation": "[parameters('MusicStoreEntitiesCollation')]",
+                        "edition": "[parameters('MusicStoreEntitiesEdition')]",
+                        "maxSizeBytes": "1073741824",
+                        "requestedServiceObjectiveName": "[parameters('MusicStoreEntitiesRequestedServiceObjectiveName')]"
+                    }
+                }
+            ]
+        }
+    ],
+    "outputs": {
+    }
+}
