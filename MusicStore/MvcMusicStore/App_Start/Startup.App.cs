@@ -13,15 +13,15 @@ namespace MvcMusicStore
 
         public void ConfigureApp(IAppBuilder app)
         {
-            using (var context = new MusicStoreEntities())
-            {
-                //context.Database.Delete();
-                //context.Database.Create();
+            //using (var context = new MusicStoreEntities())
+            //{
+            //    //context.Database.Delete();
+            //    //context.Database.Create();
 
-                new SampleData().Seed(context);
-            }
+            //    new SampleData().Seed(context);
+            //}
 
-            CreateAdminUser().Wait();
+            //CreateAdminUser().Wait();
         }
 
         private async Task CreateAdminUser()
