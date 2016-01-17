@@ -30,7 +30,7 @@
             "minLength": 1
         },
         "musicstoredatabaseserverAdminLoginPassword": {
-            "type": "securestring"
+            "type": "string"
         },
         "DefaultConnectionName": {
             "type": "string",
