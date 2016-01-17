@@ -222,6 +222,222 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "[concat(parameters('MusicStorePlanName'), '-', resourceGroup().name)]",
+            "type": "Microsoft.Insights/autoscalesettings",
+            "location": "East US",
+            "apiVersion": "2014-04-01",
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]"
+            ],
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]": "Resource",
+                "displayName": "MusicStoreAppInsights AutoScale"
+            },
+            "properties": {
+                "name": "[concat(parameters('MusicStorePlanName'), '-', resourceGroup().name)]",
+                "profiles": [
+                    {
+                        "name": "Default",
+                        "capacity": {
+                            "minimum": 1,
+                            "maximum": 2,
+                            "default": 1
+                        },
+                        "rules": [
+                            {
+                                "metricTrigger": {
+                                    "metricName": "CpuPercentage",
+                                    "metricResourceUri": "[concat(resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT10M",
+                                    "timeAggregation": "Average",
+                                    "operator": "GreaterThan",
+                                    "threshold": null
+                                },
+                                "scaleAction": {
+                                    "direction": "Increase",
+                                    "type": "ChangeCount",
+                                    "value": 1,
+                                    "cooldown": "PT10M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "CpuPercentage",
+                                    "metricResourceUri": "[concat(resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT1H",
+                                    "timeAggregation": "Average",
+                                    "operator": "LessThan",
+                                    "threshold": null
+                                },
+                                "scaleAction": {
+                                    "direction": "Decrease",
+                                    "type": "ChangeCount",
+                                    "value": 1,
+                                    "cooldown": "PT1H"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "enabled": false,
+                "targetResourceUri": "[concat(resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]"
+            }
+        },
+        {
+            "name": "[concat('CPUHigh ', parameters('MusicStorePlanName'))]",
+            "type": "Microsoft.Insights/alertrules",
+            "location": "East US",
+            "apiVersion": "2014-04-01",
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]"
+            ],
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]": "Resource",
+                "displayName": "CPUHigh MusicStoreAppInsights"
+            },
+            "properties": {
+                "name": "[concat('CPUHigh ', parameters('MusicStorePlanName'))]",
+                "description": "[concat('The average CPU is high across all the instances of ', parameters('MusicStorePlanName'))]",
+                "isEnabled": false,
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[concat(resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]",
+                        "metricName": "CpuPercentage"
+                    },
+                    "operator": "GreaterThan",
+                    "threshold": 90,
+                    "windowSize": "PT15M"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "sendToServiceOwners": true,
+                    "customEmails": [ ]
+                }
+            }
+        },
+        {
+            "name": "[concat('LongHttpQueue ', parameters('MusicStorePlanName'))]",
+            "type": "Microsoft.Insights/alertrules",
+            "location": "East US",
+            "apiVersion": "2014-04-01",
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]"
+            ],
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]": "Resource",
+                "displayName": "LongHttpQueue MusicStoreAppInsights"
+            },
+            "properties": {
+                "name": "[concat('LongHttpQueue ', parameters('MusicStorePlanName'))]",
+                "description": "[concat('The HTTP queue for the instances of ', parameters('MusicStorePlanName'), ' has a large number of pending requests.')]",
+                "isEnabled": false,
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[concat(resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('MusicStorePlanName'))]",
+                        "metricName": "HttpQueueLength"
+                    },
+                    "operator": "GreaterThan",
+                    "threshold": null,
+                    "windowSize": "PT5M"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "sendToServiceOwners": true,
+                    "customEmails": [ ]
+                }
+            }
+        },
+        {
+            "name": "[concat('ServerErrors ', 'MusicStoreAppInsights')]",
+            "type": "Microsoft.Insights/alertrules",
+            "location": "East US",
+            "apiVersion": "2014-04-01",
+            "dependsOn": [
+                "[concat('Microsoft.Web/sites/', variables('MusicStoreAppName'))]"
+            ],
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('MusicStoreAppName'))]": "Resource",
+                "displayName": "ServerErrors MusicStoreAppInsights"
+            },
+            "properties": {
+                "name": "[concat('ServerErrors ', variables('MusicStoreAppName'))]",
+                "description": "[concat(variables('MusicStoreAppName'), ' has some server errors, status code 5xx.')]",
+                "isEnabled": false,
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[concat(resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('MusicStoreAppName'))]",
+                        "metricName": "Http5xx"
+                    },
+                    "operator": "GreaterThan",
+                    "threshold": null,
+                    "windowSize": "PT5M"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "sendToServiceOwners": true,
+                    "customEmails": [ ]
+                }
+            }
+        },
+        {
+            "name": "[concat('ForbiddenRequests ', 'MusicStoreAppInsights')]",
+            "type": "Microsoft.Insights/alertrules",
+            "location": "East US",
+            "apiVersion": "2014-04-01",
+            "dependsOn": [
+                "[concat('Microsoft.Web/sites/', variables('MusicStoreAppName'))]"
+            ],
+            "tags": {
+                "displayName": "ForbiddenRequests MusicStoreAppInsights"
+            },
+            "properties": {
+                "name": "[concat('ForbiddenRequests ', variables('MusicStoreAppName'))]",
+                "description": "[concat(variables('MusicStoreAppName'), ' has some requests that are forbidden, status code 403.')]",
+                "isEnabled": false,
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[concat(resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('MusicStoreAppName'))]",
+                        "metricName": "Http403"
+                    },
+                    "operator": "GreaterThan",
+                    "threshold": 0,
+                    "windowSize": "PT5M"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "sendToServiceOwners": true,
+                    "customEmails": [ ]
+                }
+            }
+        },
+        {
+            "name": "MusicStoreAppInsights",
+            "type": "Microsoft.Insights/components",
+            "location": "Central US",
+            "apiVersion": "2014-04-01",
+            "dependsOn": [
+                "[concat('Microsoft.Web/sites/', variables('MusicStoreAppName'))]"
+            ],
+            "tags": {
+                "displayName": "Component MusicStoreAppInsights"
+            },
+            "properties": {
+                "applicationId": "[variables('MusicStoreAppName')]"
+            }
         }
     ],
     "outputs": {
