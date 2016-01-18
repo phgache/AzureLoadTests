@@ -11,7 +11,7 @@
     </Request>
   </Items>
   <DataSources>
-    <DataSource Name="GenreDataSource" Provider="System.Data.SqlClient" Connection="LAs4ogoKlDf6tvf2kPEfXvcqDQBFGCPMMfDf8qBiqf5kYJSUTmSiKkEaLDmRaM+8HjrhfIuysVs/qV3ylRtfymbOjloUoCycwl228N9bDDbNGUyB1ML7mf0inZypRVmFROJ3eI2MNYzdNy+E4TfjvXxe4xlb3AVlh7xnyJqnewwwlIoL+p0eGfY1k4CmFoyuOUZH+N4DOUGbB+5lmMoD4dz3+yA3+38j" ConnectionDisplayValue="Data Source=musicstoredata.database.windows.net,1433;Initial Catalog=MusicStoreEntities;Persist Security Info=True;User ID=sqladmin">
+    <DataSource Name="GenreDataSource" Provider="System.Data.SqlClient" Connection="LAs4ogoKlDf6tvf2kPEfXvcqDQBFGCPMaNg4oFy3mbPHks7OYqcgLjbj2kzeSYiTS2jiefXYRmXwML1ZYwk7p7JK/ZuT7Km/r5dyphPNsutKVUJZ25BRqw8RH8fEZi3DSSgXy0zT9abjCg1t+R+SnCtkuw0NnjtGdkO/aO2Jh8bOztt4ftmwNN118zxkNKogDPv1fdg30d7muUi0jOYLV0PlZXYKpLxV/CqzfiA6rx0=" ConnectionDisplayValue="Data Source=musicstoredatabaseserver.database.windows.net,1433;Initial Catalog=MusicStoreEntities;Persist Security Info=True;User ID=sqladmin">
       <Tables>
         <DataSourceTable Name="Genres" SelectColumns="SelectOnlyBoundColumns" AccessMethod="Random" />
       </Tables>

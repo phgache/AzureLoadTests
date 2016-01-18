@@ -60,16 +60,18 @@ namespace LoadTests
             request4.ThinkTime = 8;
             request4.Timeout = 60;
             request4.Headers.Add(new WebTestRequestHeader("DNT", "1"));
-            ExtractText extractionRule2 = new ExtractText();
-            extractionRule2.StartsWith = "data-id=\"";
-            extractionRule2.EndsWith = "\"\r\n                  data-url";
-            extractionRule2.Index = 0;
-            extractionRule2.IgnoreCase = false;
-            extractionRule2.UseRegularExpression = false;
-            extractionRule2.HtmlDecode = true;
-            extractionRule2.Required = false;
-            extractionRule2.ContextParameterName = "IdToRemove";
-            request4.ExtractValues += new EventHandler<ExtractionEventArgs>(extractionRule2.Extract);
+            ExtractText extractionRule1 = new ExtractText();
+            extractionRule1.StartsWith = "data-id=\"";
+            extractionRule1.EndsWith = "\" ";
+            extractionRule1.Index = 0;
+            extractionRule1.IgnoreCase = false;
+            extractionRule1.UseRegularExpression = false;
+            extractionRule1.HtmlDecode = true;
+            extractionRule1.Required = true;
+            extractionRule1.ExtractRandomMatch = false;
+            extractionRule1.SearchInHeaders = false;
+            extractionRule1.ContextParameterName = "IdToRemove";
+            request4.ExtractValues += new EventHandler<ExtractionEventArgs>(extractionRule1.Extract);
             yield return request4;
             request4 = null;
 
