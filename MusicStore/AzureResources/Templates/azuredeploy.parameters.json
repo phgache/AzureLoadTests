@@ -5,11 +5,11 @@
         "MusicStorePlanName": {
             "value": "MusicStorePlan"
         },
-        "DefaultConnectionName": {
-            "value": "DefaultCollection"
+        "MusicStorePlanSKU": {
+            "value": "Standard"
         },
-        "MusicStoreEntitiesName": {
-            "value": "MusicStoreEntities"
+        "MusicStorePlanWorkerSize": {
+            "value": "1"
         }
     }
 }

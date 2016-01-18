@@ -70,25 +70,6 @@
             "type": "string",
             "minLength": 1
         },
-        "MusicStoreEntitiesSKU": {
-            "type": "string",
-            "allowedValues": [
-                "Free",
-                "Shared",
-                "Basic",
-                "Standard"
-            ],
-            "defaultValue": "Free"
-        },
-        "MusicStoreEntitiesWorkerSize": {
-            "type": "string",
-            "allowedValues": [
-                "0",
-                "1",
-                "2"
-            ],
-            "defaultValue": "0"
-        },
         "MusicStoreEntitiesCollation": {
             "type": "string",
             "minLength": 1,
