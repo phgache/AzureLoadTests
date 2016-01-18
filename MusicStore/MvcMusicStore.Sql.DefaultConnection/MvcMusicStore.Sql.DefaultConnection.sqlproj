@@ -14,7 +14,7 @@
     </RootPath>
     <RootNamespace>MvcMusicStore.Sql.DefaultConnection</RootNamespace>
     <AssemblyName>MvcMusicStore.Sql.DefaultConnection</AssemblyName>
-    <ModelCollation>1036,CI</ModelCollation>
+    <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -23,7 +23,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <DefaultCollation>French_CI_AS</DefaultCollation>
+    <DefaultCollation>Latin1_General_CI_AS</DefaultCollation>
     <AnsiNulls>False</AnsiNulls>
     <QuotedIdentifier>False</QuotedIdentifier>
     <DelayedDurability>DISABLED</DelayedDurability>
