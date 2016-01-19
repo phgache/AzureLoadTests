@@ -236,7 +236,7 @@
                                     "timeWindow": "PT10M",
                                     "timeAggregation": "Average",
                                     "operator": "GreaterThan",
-                                    "threshold": null
+                                    "threshold": 30
                                 },
                                 "scaleAction": {
                                     "direction": "Increase",
@@ -254,7 +254,7 @@
                                     "timeWindow": "PT1H",
                                     "timeAggregation": "Average",
                                     "operator": "LessThan",
-                                    "threshold": null
+                                    "threshold": 10
                                 },
                                 "scaleAction": {
                                     "direction": "Decrease",
@@ -328,7 +328,7 @@
                         "metricName": "HttpQueueLength"
                     },
                     "operator": "GreaterThan",
-                    "threshold": null,
+                    "threshold": 5,
                     "windowSize": "PT5M"
                 },
                 "action": {
@@ -362,7 +362,7 @@
                         "metricName": "Http5xx"
                     },
                     "operator": "GreaterThan",
-                    "threshold": null,
+                    "threshold": 0,
                     "windowSize": "PT5M"
                 },
                 "action": {
