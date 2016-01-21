@@ -460,6 +460,18 @@
           </CounterSetReferences>
         </CounterSetMapping>
       </CounterSetMappings>
+      <Applications>
+        <AutComponent Description="" Id="ApplicationInsights~/subscriptions/b4321def-614a-4b34-8f29-fddbe0c135dd/resourceGroups/MusicStore/providers/microsoft.insights/components/musicstoreappinsights" Name="musicstoreappinsights" Type="ApplicationInsights" Separator="\" Version="2.0">
+          <AutCounters>
+            <AutCounter Description="Total bytes per second read and written to files, network and devices." Id="/subscriptions/b4321def-614a-4b34-8f29-fddbe0c135dd/resourceGroups/MusicStore/providers/microsoft.insights/components/musicstoreappinsights~performanceCounter.io_data_bytes_per_sec.value~Max" Name="Process IO rate" Path="\musicstoreappinsights\PerformanceCounters\performanceCounter.io_data_bytes_per_sec.value\Max" />
+            <AutCounter Description="Exceptions thrown per second." Id="/subscriptions/b4321def-614a-4b34-8f29-fddbe0c135dd/resourceGroups/MusicStore/providers/microsoft.insights/components/musicstoreappinsights~performanceCounter.number_of_exceps_thrown_per_sec.value~Sum" Name="Exception rate" Path="\musicstoreappinsights\PerformanceCounters\performanceCounter.number_of_exceps_thrown_per_sec.value\Sum" />
+            <AutCounter Description="The percentage of elapsed time of all process threads used by the processor to execution instructions for the applications process." Id="/subscriptions/b4321def-614a-4b34-8f29-fddbe0c135dd/resourceGroups/MusicStore/providers/microsoft.insights/components/musicstoreappinsights~performanceCounter.percentage_processor_time.value~Max" Name="Process CPU" Path="\musicstoreappinsights\PerformanceCounters\performanceCounter.percentage_processor_time.value\Max" />
+            <AutCounter Description="Memory exclusively assigned to the monitored application's processes." Id="/subscriptions/b4321def-614a-4b34-8f29-fddbe0c135dd/resourceGroups/MusicStore/providers/microsoft.insights/components/musicstoreappinsights~performanceCounter.process_private_bytes.value~Max" Name="Process private bytes" Path="\musicstoreappinsights\PerformanceCounters\performanceCounter.process_private_bytes.value\Max" />
+            <AutCounter Description="Time between receiving an HTTP request and finishing sending the response." Id="/subscriptions/b4321def-614a-4b34-8f29-fddbe0c135dd/resourceGroups/MusicStore/providers/microsoft.insights/components/musicstoreappinsights~request.duration~Max" Name="Server response time" Path="\musicstoreappinsights\Server\request.duration\Max" />
+            <AutCounter Description="Rate of all requests to the application per second." Id="/subscriptions/b4321def-614a-4b34-8f29-fddbe0c135dd/resourceGroups/MusicStore/providers/microsoft.insights/components/musicstoreappinsights~request.rate~Avg" Name="Request rate" Path="\musicstoreappinsights\Server\request.rate\Avg" />
+          </AutCounters>
+        </AutComponent>
+      </Applications>
     </RunConfiguration>
   </RunConfigurations>
 </LoadTest>
